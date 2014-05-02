@@ -3,6 +3,7 @@ from hashlib import sha256
 from database import *
 import string,random
 import re
+from config import SECRET_KEY
 
 app = Flask(__name__)
 app.debug = True
