@@ -73,11 +73,9 @@
         </div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <ul class="flashes">
                 {% for message in messages %}
-                    <li>{{ message }}</li>
+                <div class="alert alert-{{ message[0] }}">{{ message[1] }}</div>
                 {% endfor %}
-                </ul>
             {% endif %}
         {% endwith %}
         <div class="container">
