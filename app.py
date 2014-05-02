@@ -3,10 +3,11 @@ from hashlib import sha256
 from database import *
 import string,random
 import re
-from config import SECRET_KEY
+from config import secret_key
 
 app = Flask(__name__)
 app.debug = True
+app.secret_key = secret_key
 nickserv_regex = re.compile(r'[^ ]+')
 @app.route('/')
 def index():
