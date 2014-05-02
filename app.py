@@ -28,7 +28,7 @@ def register():
             return render_template('register.html')
         password = sha256(request.form['password']).hexdigest()
         confirmation_code = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(10)])
-        u = User(account=account, password=password, confirmation_code=confirmation_code)
+        u = User(account=request.form['account'], password=password, confirmation_code=confirmation_code)
         session.add(u)
         session.commit()
         flash('<div class="alert alert-success">Registration successful.</div>')
