@@ -6,7 +6,7 @@ import re
 from config import secret_key
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 app.secret_key = secret_key
 nickserv_regex = re.compile(r'[^ ]+')
 @app.route('/')
