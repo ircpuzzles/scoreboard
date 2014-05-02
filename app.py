@@ -34,7 +34,7 @@ def register():
         session.add(u)
         session.commit()
         flash('<div class="alert alert-success">Registration successful.</div>')
-        return render_template('register.html',{'submitted':True,'confirmation_code':confirmation_code})
+        return render_template('register.html',submitted=True,confirmation_code=confirmation_code)
         
 
 
