@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Register</h1>
 {% if submitted %}
-<p>Thank you for registering with ircpuzzles. To confirm you own this NickServ account, please <code>/msg ircpuzzlesbot confirm {{ confirmation_code }}</code>. Your registration is not complete (and you will not be able to compete) until you do this.</p>
+<p>Thank you for registering with ircpuzzles. To confirm you own this NickServ account, please join the lobby (#ircpuzzles) and then <code>/msg ircpuzzlesbot confirm {{ confirmation_code }}</code>. Your registration is not complete (and you will not be able to compete) until you do this.</p>
 {% else %}
 <form action="" method="POST" name="register">
     <label for="account">NickServ account: </label><input type="text" name="account"><br>
