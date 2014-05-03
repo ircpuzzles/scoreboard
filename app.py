@@ -4,7 +4,7 @@ from database import *
 import string,random
 import re
 from config import secret_key
-from challenge.database import Game
+from challenge.game import Game
 
 app = Flask(__name__)
 app.debug = False
