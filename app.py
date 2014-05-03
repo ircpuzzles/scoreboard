@@ -8,7 +8,7 @@ from challenge.game import Game
 from operator import itemgetter
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 app.secret_key = secret_key
 nickserv_regex = re.compile(r'^[a-zA-Z0-9_\|`\^-]+$')
 
