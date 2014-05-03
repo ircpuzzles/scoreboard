@@ -16,6 +16,7 @@
             {% for user in track.users %}
             {% if user[0] == channel %}
             <li class="list-group-item" style="border-width:0px"><b>{{ user }}</b> at {{ user[1] }}</li>
+            {% endif %}
             {% endfor %}
         </ul>
     </div>
