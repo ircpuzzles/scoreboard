@@ -10,6 +10,14 @@ app = Flask(__name__)
 app.debug = False
 app.secret_key = secret_key
 nickserv_regex = re.compile(r'[^ ]+')
+
+def dict_to_list(d):
+    dictlist = []
+    for key,value in d.iteritems():
+        temp = [key,value]
+        dictlist.append(temp)
+    return dictlist
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -58,7 +66,7 @@ def stats():
                 j = session.query(Join).filter(Join.channel == track.channels[chan].name)
                 for join in j.all():
                     tracks[track.name]['users'][join.user.account] = chan+1
-            tracks[track.name]['users'] = sorted(list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
+            tracks[track.name]['users'] = sorted(dict_to_list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
         print(tracks)
         return str(tracks)
 
