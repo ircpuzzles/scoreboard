@@ -65,11 +65,11 @@ def stats():
             tracks[track.name] = {'users':{}}
             for chan in range(len(track.channels)):
                 j = session.query(Join).filter(Join.channel == track.channels[chan].name)
-                tracks[track.name]['maxchan'] = max(j.all(),key=itemgetter(1))[0]
 
                 for join in j.all():
                     tracks[track.name]['users'][join.user.account] = [chan+1,str(Join.time)]
             tracks[track.name]['users'] = sorted(dict_to_list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
+            tracks[track.name]['maxchan'] = max(tracks[track.name]['users'],key=itemgetter(0))
         
         return render_template('stats.html',game=True,tracks=tracks)
 
