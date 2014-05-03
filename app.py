@@ -60,7 +60,7 @@ def stats():
                     tracks[track.name]['users'][join.user.account] = chan+1
             tracks[track.name]['users'] = sorted(list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
         print(tracks)
-        return render_templates('stats.html',game=True)
+        return str(tracks)
 
 
 if __name__ == '__main__':
