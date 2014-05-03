@@ -5,6 +5,7 @@ import string,random
 import re
 from config import secret_key
 from challenge.game import Game
+from operator import itemgetter
 
 app = Flask(__name__)
 app.debug = False
@@ -64,11 +65,13 @@ def stats():
             tracks[track.name] = {'users':{}}
             for chan in range(len(track.channels)):
                 j = session.query(Join).filter(Join.channel == track.channels[chan].name)
+                tracks[track.name]['maxchan'] = max(j.all(),key=itemgetter(1))[0]
+
                 for join in j.all():
-                    tracks[track.name]['users'][join.user.account] = chan+1
+                    tracks[track.name]['users'][join.user.account] = [chan+1,str(Join.time)]
             tracks[track.name]['users'] = sorted(dict_to_list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
-        print(tracks)
-        return str(tracks)
+        
+        return render_template('stats.html',game=True,tracks=tracks)
 
 
 if __name__ == '__main__':
