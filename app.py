@@ -49,7 +49,7 @@ def getRunningGame():
 def stats():
     game = getRunningGame()
     if not game:
-        return render_templates('stats.html',game=False)
+        return render_template('stats.html',game=False)
     if game:
         tracks = {}
         for track in game.tracks:
