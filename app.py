@@ -9,7 +9,7 @@ from challenge.game import Game
 app = Flask(__name__)
 app.debug = False
 app.secret_key = secret_key
-nickserv_regex = re.compile(r'[^ ]+')
+nickserv_regex = re.compile(r'^[a-zA-Z0-9_\|`\^-]+$')
 
 def dict_to_list(d):
     dictlist = []
