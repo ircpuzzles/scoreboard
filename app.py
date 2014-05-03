@@ -8,7 +8,7 @@ from challenge.game import Game
 from operator import itemgetter
 
 app = Flask(__name__)
-app.debug = False
+app.debug = True
 app.secret_key = secret_key
 nickserv_regex = re.compile(r'^[a-zA-Z0-9_\|`\^-]+$')
 
@@ -67,9 +67,9 @@ def stats():
                 j = session.query(Join).filter(Join.channel == track.channels[chan].name)
 
                 for join in j.all():
-                    tracks[track.name]['users'][join.user.account] = [chan+1,str(Join.time)]
+                    tracks[track.name]['users'][join.user.account] = [chan,str(join.time)]
             tracks[track.name]['users'] = sorted(dict_to_list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
-            tracks[track.name]['maxchan'] = (max(tracks[track.name]['users'],key=itemgetter(0)) if tracks[track.name]['users'] else 0)
+            tracks[track.name]['maxchan'] = (max(tracks[track.name]['users'],key=lambda x:x[1][0])[1][0] if tracks[track.name]['users'] else 0)
         
         return render_template('stats.html',game=True,tracks=tracks)
 
