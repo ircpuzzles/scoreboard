@@ -1,5 +1,5 @@
-from sqlalchemy import create_engine, orm, Column, Integer, String, Boolean, ForeignKey, DateTime, func, relationship
-from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy import create_engine, orm, Column, Integer, String, Boolean, ForeignKey, DateTime, func
+from sqlalchemy.orm import sessionmaker, scoped_session, relationship
 from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine('postgresql://ircpuzzles:ircpuzzles@localhost/ircpuzzles')
