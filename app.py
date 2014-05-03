@@ -4,6 +4,7 @@ from database import *
 import string,random
 import re
 from config import secret_key
+from .database import Game
 
 app = Flask(__name__)
 app.debug = False
@@ -35,7 +36,31 @@ def register():
         session.commit()
         flash(('success','Registration successful.'))
         return render_template('register.html',submitted=True,confirmation_code=confirmation_code)
-        
+
+def getRunningGame():
+    res = session.query(GameInfo).filter(GameInfo.running == True)
+    if res.count() < 1:
+        return None
+    else:
+        return Game(res.one().path)
+
+
+@app.route('/stats/')
+def stats():
+    game = getRunningGame()
+    if not game:
+        return render_templates('stats.html',game=False)
+    if game:
+        tracks = {}
+        for track in game.tracks:
+            tracks[track.name] = {'users':{}}
+            for chan in range(len(track.channels)):
+                j = session.query(Join).filter(Join.channel == track.channels[chan].name)
+                for join in j.all():
+                    tracks[track.name]['users'][join.user.account] = chan+1
+            tracks[track.name]['users'] = sorted(list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
+        print(tracks)
+        return render_templates('stats.html',game=True)
 
 
 if __name__ == '__main__':

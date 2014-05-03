@@ -1,0 +1,10 @@
+{% set active_page = 'stats' -%}
+{% extends 'base.html' %}
+{% block title %}IRC Puzzles | Stats{% endblock %}
+{% block content %}
+{% if game %}
+<h3>There is some running game.</h3>
+{% else %}
+<h3>There is no running game.</h3>
+{% endif %}
+{% endblock %}
