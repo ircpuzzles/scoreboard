@@ -69,7 +69,7 @@ def stats():
                 for join in j.all():
                     tracks[track.name]['users'][join.user.account] = [chan+1,str(Join.time)]
             tracks[track.name]['users'] = sorted(dict_to_list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
-            tracks[track.name]['maxchan'] = max(tracks[track.name]['users'],key=itemgetter(0))
+            tracks[track.name]['maxchan'] = (max(tracks[track.name]['users'],key=itemgetter(0)) if tracks[track.name]['users'] else 0)
         
         return render_template('stats.html',game=True,tracks=tracks)
 
