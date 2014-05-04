@@ -13,10 +13,10 @@
         <div class="panel-heading">
             <h3 class="panel-title">Channel {{ channel }}</h3>
         </div>
-        <ul class="list-group" style="border-width:0px 0px 0px 0px">
+        <ul class="nav nav-list" style="border-width:0px 0px 0px 0px">
             {% for user in tracks[track]['users'] %}
             {% if user[1][0] == channel %}
-            <li class="list-group-item" style="border-width:0px"><b>{{ user[0] }}</b> at {{ user[1][1] }}</li>
+            <li style="border-width:0px"><b>{{ user[0] }}</b> at {{ user[1][1] }}</li>
             {% endif %}
             {% endfor %}
         </ul>
