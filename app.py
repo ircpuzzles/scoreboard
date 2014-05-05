@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, jsonify
 from hashlib import sha256
 from database import *
 import string,random
@@ -73,6 +73,21 @@ def stats():
         
         return render_template('stats.html',game=True,tracks=tracks)
 
+@app.route('/stats.json')
+def stats_json():
+    game = getRunningGame()
+    if not game:
+        return jsonify(error="Game not running")
+    tracks = {}
+    for track in game.tracks:
+        tracks[track.name] = {'users': {}}
+        for chan in range(len(track.channels)):
+            j = session.query(Join).filter(Join.channel == track.channels[chan].name)
+            for join in j.all():
+                tracks[track.name]['users'][join.user.account] = [chan, str(join.time)]
+            tracks[track.name]['users'] = sorted(dict_to_list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
+            tracks[track.name]['maxchan'] = (max(tracks[track.name]['users'],key=lambda x:x[1][0])[1][0] if tracks[track.name]['users'] else 0)
+    return jsonify(stats=tracks)
 
 if __name__ == '__main__':
     app.run()
