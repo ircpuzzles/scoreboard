@@ -85,8 +85,8 @@ def stats_json():
             j = session.query(Join).filter(Join.channel == track.channels[chan].name)
             for join in j.all():
                 tracks[track.name]['users'][join.user.account] = [chan, str(join.time)]
-            tracks[track.name]['users'] = sorted(dict_to_list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
-            tracks[track.name]['maxchan'] = (max(tracks[track.name]['users'],key=lambda x:x[1][0])[1][0] if tracks[track.name]['users'] else 0)
+            #tracks[track.name]['users'] = sorted(dict_to_list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
+            #tracks[track.name]['maxchan'] = (max(tracks[track.name]['users'],key=lambda x:x[1][0])[1][0] if tracks[track.name]['users'] else 0)
     return jsonify(stats=tracks)
 
 if __name__ == '__main__':
