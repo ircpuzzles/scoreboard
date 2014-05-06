@@ -73,6 +73,10 @@ def stats():
         
         return render_template('stats.html',game=True,tracks=tracks)
 
+@app.route('/faq/')
+def faq():
+    return render_template('faq.html')
+
 @app.route('/stats.json')
 def stats_json():
     game = getRunningGame()
