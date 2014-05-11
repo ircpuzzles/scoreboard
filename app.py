@@ -28,11 +28,15 @@ def register():
     if request.method == 'GET':
         return render_template('register.html')
     elif request.method == 'POST':
-        if request.form['tos'] != 'agree':
+
+        if request.form.get('tos','') == '':
             flash(('danger','You must agree to the Terms of Service.'))
             return render_template('register.html')
         if request.form['password'] != request.form['confirm_password']:
             flash(('danger','Password confirmation does not match'))
+            return render_template('register.html')
+        if len(request.form['password']) == 0:
+            flash(('danger', 'Password empty'))
             return render_template('register.html')
         if not nickserv_regex.findall(request.form['account']):
             flash(('danger','Invalid NickServ account'))
