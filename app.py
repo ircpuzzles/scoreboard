@@ -30,6 +30,7 @@ def register():
     elif request.method == 'POST':
         if request.form['tos'] != 'agree':
             flash(('danger','You must agree to the Terms of Service.'))
+            return render_template('register.html')
         if request.form['password'] != request.form['confirm_password']:
             flash(('danger','Password confirmation does not match'))
             return render_template('register.html')
