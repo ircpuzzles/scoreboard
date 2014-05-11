@@ -28,6 +28,8 @@ def register():
     if request.method == 'GET':
         return render_template('register.html')
     elif request.method == 'POST':
+        if request.form['tos'] != 'agree':
+            flash(('danger','You must agree to the Terms of Service.'))
         if request.form['password'] != request.form['confirm_password']:
             flash(('danger','Password confirmation does not match'))
             return render_template('register.html')
