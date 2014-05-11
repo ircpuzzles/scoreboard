@@ -93,5 +93,9 @@ def stats_json():
             #tracks[track.name]['maxchan'] = (max(tracks[track.name]['users'],key=lambda x:x[1][0])[1][0] if tracks[track.name]['users'] else 0)
     return jsonify(stats=tracks)
 
+@app.route('/tos/')
+def tos():
+    return render_template('tos.html')
+
 if __name__ == '__main__':
     app.run()
