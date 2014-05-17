@@ -75,7 +75,7 @@
                     </button>
                     <a class="brand" href="/#">IRC Puzzles</a>
                     <div class="nav-collapse collapse">
-                        <ul class="nav navbar-nav">
+                        <ul class="nav">
                             {% for href, id, caption in navigation_bar %}
                             <li{% if id == active_page %} class="active"{% endif %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
                             {% endfor %}
