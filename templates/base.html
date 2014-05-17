@@ -78,6 +78,9 @@
                      <div class="navbar-collapse collapse">
                          <ul class="nav navbar-nav">
                              <li class="active"><a href="/">Home</a></li>
+                             {% for href, id, caption in navigation_bar %}
+                             <li{% if id == active_page %} class="active"{% endif %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
+                             {% endfor %}
                          </ul>
                      </div><!--/.nav-collapse -->
                  </div><!--/.container-fluid -->
@@ -94,15 +97,12 @@
                                      <a class="brand" href="/#">IRC Puzzles</a>
                                          <div class="nav-collapse collapse">
                                              <ul class="nav">
-                                                 {% for href, id, caption in navigation_bar %}
-                                                 <li{% if id == active_page %} class="active"{% endif %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
-                                                     {% endfor %}
-                                                 </ul>
-                                             </div>
+                                             </ul>
                                          </div>
                                      </div>
                                  </div>
-                                 -->
+                             </div>
+                             -->
 <div class="container">
     {% with messages = get_flashed_messages() %}
     {% if messages %}
