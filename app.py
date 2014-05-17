@@ -108,5 +108,9 @@ def tos():
 def credits():
     return render_template('credits.html')
 
+@app.route('/prizes/')
+def prizes():
+    return render_template('prizes.html')
+
 if __name__ == '__main__':
     app.run()
