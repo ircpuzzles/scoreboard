@@ -2,30 +2,30 @@
 {% extends 'base.html' %}
 {% block title %}IRC Puzzles | Stats{% endblock %}
 {% block content %}
-{% if game %}
-<div class="row">
-{% set trackinterval = (12/(tracks.keys()|length))|int -%} 
-{% for track in tracks %}
-<div class="span{{ trackinterval }}">
-    <h2>{{ track }}</h2>
-    {% for channel in range(tracks[track]['maxchan']+1)|reverse %}
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Channel {{ channel }}</h3>
-        </div>
-        <ul class="nav nav-list" style="border-width:0px 0px 0px 0px">
-            {% for user in tracks[track]['users'] %}
-            {% if user[1][0] == channel %}
-            <li style="border-width:0px"><b>{{ user[0] }}</b> at {{ user[1][1] }}</li>
-            {% endif %}
+    {% if game %}
+        <div class="row">
+            {% set trackinterval = (12/(tracks.keys()|length))|int -%} 
+            {% for track in tracks %}
+                <div class="col-sm-{{trackinterval}}">
+                    <h2>{{ track }}</h2>
+                    {% for channel in range(tracks[track]['maxchan']+1)|reverse %}
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Channel {{ channel }}</h3>
+                            </div>
+                            <ul class="nav nav-list" style="border-width:0px 0px 0px 0px">
+                                {% for user in tracks[track]['users'] %}
+                                    {% if user[1][0] == channel %}
+                                        <li style="border-width:0px"><b>{{ user[0] }}</b> at {{ user[1][1] }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
             {% endfor %}
-        </ul>
-    </div>
-    {% endfor %}
-</div>
-{% endfor %}
-</div>
-{% else %}
-<h3>There is no running game.</h3>
-{% endif %}
+        </div>
+    {% else %}
+        <h3>There is no running game.</h3>
+    {% endif %}
 {% endblock %}
