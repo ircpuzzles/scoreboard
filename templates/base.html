@@ -44,7 +44,7 @@
                     margin-top: 0;
                 }
                 
-                .navbar .sub-menu:before {
+                /*.navbar .sub-menu:before {
                     border-bottom: 7px solid transparent;
                     border-left: none;
                     border-right: 7px solid rgba(0, 0, 0, 0.2);
@@ -60,7 +60,7 @@
                     left: 10px;
                     top: 11px;
                     left: -6px;
-                }
+                }*/
             </style>
             {% block head %}{% endblock %}
     </head>
@@ -68,6 +68,11 @@
         <div class="navbar navbar-fixed-top" role="navigation">
             <div class="navbar-inner">
                 <div class="container">
+                    <button class="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="brand" href="/#">IRC Puzzles</a>
                     <ul class="nav navbar-nav">
                         {% for href, id, caption in navigation_bar %}
