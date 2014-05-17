@@ -74,11 +74,13 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="brand" href="/#">IRC Puzzles</a>
-                    <ul class="nav navbar-nav">
-                        {% for href, id, caption in navigation_bar %}
-                        <li{% if id == active_page %} class="active"{% endif %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
-                        {% endfor %}
-                    </ul>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            {% for href, id, caption in navigation_bar %}
+                            <li{% if id == active_page %} class="active"{% endif %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
