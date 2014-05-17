@@ -104,5 +104,9 @@ def stats_json():
 def tos():
     return render_template('tos.html')
 
+@app.route('/credits/')
+def credits():
+    return render_template('credits.html')
+
 if __name__ == '__main__':
     app.run()
