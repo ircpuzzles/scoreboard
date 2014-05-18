@@ -10,81 +10,81 @@
 <html>
     <head>
         <title>{% block title %}IRC Puzzles{% endblock %}</title>
-        <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-            <style type="text/css">
-                body {
-                    padding-top: 60px;
-                }
-                .sidebar-nav {
-                    padding: 9px 0;
-                }
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+            }
+            .sidebar-nav {
+                padding: 9px 0;
+            }
 
-                .dropdown-menu .sub-menu {
-                    left: 100%;
-                    position: absolute;
-                    top: 0;
-                    visibility: hidden;
-                    margin-top: -1px;
-                }
+            .dropdown-menu .sub-menu {
+                left: 100%;
+                position: absolute;
+                top: 0;
+                visibility: hidden;
+                margin-top: -1px;
+            }
 
-                .dropdown-menu li:hover .sub-menu {
-                    visibility: visible;
-                }
+            .dropdown-menu li:hover .sub-menu {
+                visibility: visible;
+            }
 
-                .dropdown:hover .dropdown-menu {
-                    display: block;
-                }
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
 
-                .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
-                    margin-top: 0;
-                }
+            .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+                margin-top: 0;
+            }
 
-            </style>
-            {% block head %}{% endblock %}
-        </head>
-        <body>
-            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">IRC Puzzles</a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            {% for href, id, caption in navigation_bar %}
-                            <li{% if id == active_page %} class="active"{% endif %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div><!--/.container-fluid -->
-            </div>
-            <!--
-            <div class="navbar navbar-fixed-top" role="navigation">
-                <div class="navbar-inner">
-                    <div class="container">
-                        <button class="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        </style>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">IRC Puzzles</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        {% for href, id, caption in navigation_bar %}
+                        <li{% if id == active_page %} class="active"{% endif %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </div>
+        <!--
+        <div class="navbar navbar-fixed-top" role="navigation">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button class="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    </button>
-                                    <a class="brand" href="/#">IRC Puzzles</a>
-                                        <div class="nav-collapse collapse">
-                                            <ul class="nav">
-                                            </ul>
-                                        </div>
+                                </button>
+                                <a class="brand" href="/#">IRC Puzzles</a>
+                                    <div class="nav-collapse collapse">
+                                        <ul class="nav">
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                            -->
+                        </div>
+                        -->
 <div class="container">
     {% with messages = get_flashed_messages() %}
     {% if messages %}
