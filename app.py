@@ -41,13 +41,14 @@ def register():
         if not nickserv_regex.findall(request.form['account']):
             flash(('danger','Invalid NickServ account'))
             return render_template('register.html')
-        users = session.query(User).filter(User.account == request.form['account']).filter(User.confirmed == True).count()
+        account = request.form['account'].lower()
+        users = session.query(User).filter(User.account == account).filter(User.confirmed == True).count()
         if users > 0:
             flash(('danger','A user is already registered with this NickServ account. Please try again.'))
             return render_template('register.html')
         password = sha256(request.form['password']).hexdigest()
         confirmation_code = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(10)])
-        u = User(account=request.form['account'], password=password, confirmation_code=confirmation_code)
+        u = User(account=account, password=password, confirmation_code=confirmation_code)
         session.add(u)
         session.commit()
         flash(('success','Registration successful.'))
