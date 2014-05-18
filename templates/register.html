@@ -7,9 +7,9 @@
 <p>Thank you for registering with ircpuzzles. To confirm you own this NickServ account, please join the lobby (#ircpuzzles) and then <code>/msg ircpuzzlesbot confirm {{ confirmation_code }}</code>. Your registration is not complete (and you will not be able to compete) until you do this.</p>
 {% else %}
 <form action="" method="POST" name="register">
-    <label for="account">NickServ account: </label><input type="text" name="account"><br>
-    <label for="password">Password:         </label><input type="password" name="password"> Note: this is NOT your NickServ password. Please use a different password to log into ircpuzzles.<br>
-    <label for="confirm_password">Confirm:      </label><input type="password" name="confirm_password"><br>
+    <label for="account">NickServ account: </label><input class="form-control" type="text" name="account"><br>
+    <label for="password">Password:         </label><input class="form-control" type="password" name="password"> Note: this is NOT your NickServ password. Please use a different password to log into ircpuzzles.<br>
+    <label for="confirm_password">Confirm:      </label><input class="form-control" type="password" name="confirm_password"><br>
     <input type="checkbox" name="tos" value="agree">I agree to the <a href="/tos/" target="_blank">Terms of Service</a>.</input><br><br>
     <input type="submit" value="Register" class="btn btn-primary">
 </form>

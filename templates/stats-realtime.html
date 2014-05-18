@@ -1,0 +1,18 @@
+{% set active_page = 'realtime_stats' -%}
+{% extends 'base.html' %}
+{% block title %}IRC Puzzles | Realtime Stats{% endblock %}
+{% block content %}
+<script>
+    var update = function() {
+        $.get('/stats.json', function(data) {
+            data = data.stats;
+            var tracks = Object.keys(data);
+            tracks.forEach(function(x) {
+                console.log('track ' + x);
+                data[x].users.forEach(function(x) {
+                });
+            });
+        });
+    }
+</script>
+{% endblock %}
