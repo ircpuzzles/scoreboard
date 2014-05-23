@@ -1,0 +1,17 @@
+{% set active_page = 'stats' -%}
+{% extends 'base.html' %}
+{% block title %}IRC Puzzles | Stats{% endblock %}
+{% block head %}
+<script>
+    function doTheNeedful() {
+        $.get('/stat/', function(data){$("body").html(data);});
+        window.setInterval(function() {
+            console.log("doing the needful...");
+            $.get('/stat/', function(data){$("body").html(data);});
+        }, 30000);
+    }
+</script>
+{% endblock %}
+{% block content %}
+<script>doTheNeedful();</script>
+{% endblock %}
