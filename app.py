@@ -61,8 +61,11 @@ def getRunningGame():
     else:
         return Game(res.one().path)
 
-
 @app.route('/stats/')
+def stat():
+    return render_template("stat.html")
+
+@app.route('/stat/')
 def stats():
     game = getRunningGame()
     if not game:
