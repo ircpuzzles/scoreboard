@@ -1,4 +1,4 @@
 scoreboard
 ==========
 
-Scoreboard/Registration system
+Scoreboard/Registration system and basic HTML
