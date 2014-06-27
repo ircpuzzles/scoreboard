@@ -75,7 +75,7 @@ def stats():
         for track in game.tracks:
             tracks[track.name] = {'users':{}}
             for chan in range(len(track.channels)):
-                j = session.query(Join).filter(Join.channel == track.channels[chan].name).filter(Join.user.account != "ahamilto").filter(Join.user.account != "csssuf")
+                j = session.query(Join).filter(Join.channel == track.channels[chan].name).join(Join.user, aliased=True).filter(account != "ahamilto").filter(account != "csssuf")
 
                 for join in j.all():
                     tracks[track.name]['users'][join.user.account] = [chan,str(join.time)]
@@ -97,7 +97,7 @@ def stats_json():
     for track in game.tracks:
         tracks[track.name] = {'users': {}}
         for chan in range(len(track.channels)):
-            j = session.query(Join).filter(Join.channel == track.channels[chan].name).filter(Join.user.account != "ahamilto").filter(Join.user.account != "csssuf")
+            j = session.query(Join).filter(Join.channel == track.channels[chan].name).join(Join.user, aliased=True).filter(account != "ahamilto").filter(account != "csssuf")
             for join in j.all():
                 tracks[track.name]['users'][join.user.account] = [chan, str(join.time)]
             #tracks[track.name]['users'] = sorted(dict_to_list(tracks[track.name]['users']),key=lambda x:x[1],reverse=True)
